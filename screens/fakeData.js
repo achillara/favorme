@@ -6,7 +6,7 @@ export default data = [
       "first": "aiden",
       "last": "lucas"
     },
-    "score":20,
+    "score":-20,
     "location": {
       "street": "1446 oak lawn ave",
       "city": "lakewood",
@@ -120,7 +120,7 @@ export default data = [
       "first": "tina",
       "last": "jennings"
     },
-    "score":52,
+    "score":-52,
     "location": {
       "street": "1123 blossom hill rd",
       "city": "orange",
@@ -310,7 +310,7 @@ export default data = [
       "first": "janice",
       "last": "holt"
     },
-    "score":8,
+    "score":-8,
     "location": {
       "street": "5555 ranchview dr",
       "city": "st. louis",
