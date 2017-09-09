@@ -48,6 +48,11 @@ const Row = (props) => (
   <Text style={styles.text}>
       {`${props.score}`}
   </Text>
+  <View style = {styles.container}> 
+    <Text style={styles.text}>
+      {`${-props.score}`}
+    </Text>
+  </View>
   </View>
 
   <View style={rightstyles.container}>
@@ -56,11 +61,7 @@ const Row = (props) => (
       Anusha 
     </Text>
   </View>
-  <View style = {newright.container}>
-    <Text style={styles.text}>
-     0
-    </Text>
-  </View>
+  
   </View>
 );
 
