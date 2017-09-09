@@ -46,11 +46,10 @@ export default TabNavigator(
               ? `ios-git-compare${focused ? '' : '-outline'}`
               : 'md-git-compare';
             break;
-
           case 'Settings':
             iconName = Platform.OS === 'ios'
               ? `ios-settings${focused ? '' : '-outline'}`
-              : 'md-gear';
+              : 'md-settings';
         }
         return (
           <Ionicons
