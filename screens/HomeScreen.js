@@ -10,8 +10,11 @@ import {
   ListView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import Row from './Rows';
+import data from './fakeData';
 
-import { MonoText } from '../components/StyledText';
+
+
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +26,7 @@ export default class HomeScreen extends React.Component {
 
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      dataSource: ds.cloneWithRows(data),
     };
   }
 
@@ -31,15 +34,15 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      /* ANUSHA LIST VIEW CODE */
+
       <View style={styles.container}>
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <View><Text>{data}</Text></View>}
+        renderRow={(data) => <Row {...data} />}
       />
       </View>
-       /* ANUSHA LIST VIEW CODE */
+
     );
 
   }
@@ -168,3 +171,7 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+
+
+
