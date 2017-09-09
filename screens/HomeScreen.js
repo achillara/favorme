@@ -31,33 +31,17 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+      /* ANUSHA LIST VIEW CODE */
       <View style={styles.container}>
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(data) => <View><Text>{data}</Text></View>}
       />
-        
-
-
-
-
-
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View>
       </View>
+       /* ANUSHA LIST VIEW CODE */
     );
+
   }
 
   _maybeRenderDevelopmentModeWarning() {
