@@ -6,7 +6,8 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import FeedScreen from '../screens/FeedScreen';
+import ExchangeScreen from '../screens/ExchangeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 export default TabNavigator(
@@ -14,8 +15,11 @@ export default TabNavigator(
     Home: {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    Feed: {
+      screen: FeedScreen,
+    },
+    Exchange: {
+      screen: ExchangeScreen,
     },
     Settings: {
       screen: SettingsScreen,
@@ -29,18 +33,24 @@ export default TabNavigator(
         switch (routeName) {
           case 'Home':
             iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+              ? `ios-home${focused ? '' : '-outline'}`
+              : 'md-home';
             break;
-          case 'Links':
+          case 'Feed':
             iconName = Platform.OS === 'ios'
-              ? `ios-link${focused ? '' : '-outline'}`
-              : 'md-link';
+              ? `ios-globe${focused ? '' : '-outline'}`
+              : 'md-globe';
             break;
+          case 'Exchange':
+            iconName = Platform.OS === 'ios'
+              ? `ios-git-compare${focused ? '' : '-outline'}`
+              : 'md-git-compare';
+            break;
+
           case 'Settings':
             iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
+              ? `ios-settings${focused ? '' : '-outline'}`
+              : 'md-gear';
         }
         return (
           <Ionicons

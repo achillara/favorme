@@ -1,10 +1,10 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
-export default class LinksScreen extends React.Component {
+export default class ExchangeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'Exchange',
   };
 
   render() {
@@ -12,7 +12,8 @@ export default class LinksScreen extends React.Component {
       <ScrollView style={styles.container}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
+        <Text>Welcome to Exchange, request and send tokens here</Text>
+
       </ScrollView>
     );
   }
