@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, Image, TouchableOpacity, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 export default class ExchangeScreen extends React.Component {
@@ -10,10 +10,24 @@ export default class ExchangeScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <Text>Welcome to Exchange, request and send tokens here</Text>
-
+		<View style={{alignItems: 'center', flexDirection: 'row'}}>
+			<View style={styles.box}>
+				<TouchableOpacity>
+					<Image
+						source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}	
+						style={{width:400, height:400}}	
+					/>
+				</TouchableOpacity>	
+			</View>
+			<View style={styles.box}>
+				<TouchableOpacity>
+					<Image
+						source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+						style={{width:400, height:400}}	
+					/>
+				</TouchableOpacity>	
+			</View>
+		</View>
       </ScrollView>
     );
   }
@@ -23,6 +37,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightgreen',
+  },
+  box: {
+	flex: 1,
+	paddingTop: 20,
+	marginTop: 15,
+	marginBottom: 15,
+	height: 70,
+	alignItems: 'center',
   },
 });
+
+
