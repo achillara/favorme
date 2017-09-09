@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ListView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -16,38 +17,31 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  
+  constructor(props) {
+    super(props);
+
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
+  }
+
+
 
   render() {
     return (
+      /* ANUSHA LIST VIEW CODE */
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}>
-
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-            <Text>Welcome to Home.</Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+      <ListView
+        style={styles.container}
+        dataSource={this.state.dataSource}
+        renderRow={(data) => <View><Text>{data}</Text></View>}
+      />
       </View>
+       /* ANUSHA LIST VIEW CODE */
     );
+
   }
 
   _maybeRenderDevelopmentModeWarning() {
