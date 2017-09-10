@@ -20,7 +20,11 @@ var user = ""
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Feed',
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+        
+      />
   };
 
   constructor(props) {

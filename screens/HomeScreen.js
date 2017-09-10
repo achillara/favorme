@@ -12,13 +12,20 @@ import {
 import { WebBrowser } from 'expo';
 import Row from './Rows';
 import data from './fakeData';
+import { Ionicons } from '@expo/vector-icons';
+
+
 
 
 
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+        
+      />,
   };
   
   constructor(props) {
@@ -84,6 +91,10 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  icons:{
+    width:24,
+    height:24,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
