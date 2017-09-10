@@ -1,0 +1,51 @@
+Arguments: 
+  /usr/local/Cellar/node/8.4.0/bin/node /usr/local/Cellar/yarn/1.0.1/libexec/bin/yarn.js install
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.5/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+
+Yarn version: 
+  1.0.1
+
+Node version: 
+  8.4.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "my-new-project",
+    "version": "0.0.0",
+    "description": "Hello Expo!",
+    "author": null,
+    "license": "",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "test": "node ./node_modules/jest/bin/jest.js --watch"
+    },
+    "jest": {
+      "preset": "jest-expo"
+    },
+    "dependencies": {
+      "@expo/samples": "^2.0.2",
+      "expo": "^20.0.0",
+      "react": "16.0.0-alpha.12",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+      "react-navigation": "^1.0.0-beta.12"
+    },
+    "devDependencies": {
+      "jest-expo": "^20.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: read ETIMEDOUT
+      at _errnoException (util.js:1041:11)
+      at TLSWrap.onread (net.js:606:25)
