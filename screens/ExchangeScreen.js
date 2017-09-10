@@ -19,7 +19,10 @@ const Item = Picker.Item;
 export default class ExchangeScreen extends Component {
 	
 	static navigationOptions = {
-		title: 'Exchange',
+		title: <Image
+        source={require('../images/logo.png')}
+		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		
+      />,
 	};
 
 	state = {
@@ -28,8 +31,12 @@ export default class ExchangeScreen extends Component {
 		selected3: 'key1',
 		color: 'red',
 		mode: Picker.MODE_DIALOG,
-		text: "What's da favor?",
-		number: 0
+		recipient: "",
+		favor: "",
+		amount: "",
+		number: 0,
+		offerPath: require('../images/offer-button.png'),
+		requestPath : require('../images/request-button.png'),
 	};	
 
 	changeMode () {
@@ -45,89 +52,71 @@ export default class ExchangeScreen extends Component {
 		this.setState(newState);
 	}
 
+	changeButton(name) {
+		if (name === 'offer'){
+			this.state.offerPath = require('../images/offer-button-active.png');
+			this.state.requestPath = require('../images/request-button.png');
+		}
+		else{
+			this.state.offerPath = require('../images/offer-button.png');
+			this.state.requestPath = require('../images/request-button-active.png');
+		}
+	}
+
 	temp = ["foo", "barr", "baz"]
 	render() {
 		return (
 			<ScrollView style={styles.container}>
 				<View style={styles.newRequestContainer}>
+					<View style={{flex: 2, flexDirection: 'row'}}>
+						<View style={styles.box}>
+							<TouchableOpacity onPress={this.changeButton('request')}>
+								<Image
+								source={this.state.requestPath}	
+								style={{flex:1, height: 100, width: 120, marginRight: -50, resizeMode: 'contain'}}
+								/>
+							</TouchableOpacity>	
+						</View>
+						<View style={styles.box}>
+							<TouchableOpacity onPress= {this.changeButton('offer') }>
+								<Image
+								source={this.state.offerPath}
+								style={{flex:1, height: 100, width: 120, resizeMode: 'contain', marginLeft: -50}}
+								/>
+							</TouchableOpacity>	
+						</View>
+					</View>
 					<View style={{flex: 2, alignItems:'center', flexDirection: 'column'}}>
 						<TextInput
-							style={{width: 200, height: 40, backgroundColor: '#fff', borderColor: 'gray', borderWidth: 1}}
-							onChangeText={(text) => this.setState({text})}
-							value={"Recipient"}
+							style={styles.textField}
+							onChangeText={(recipient) => this.setState({recipient})}
+							placeholder={"  Recipient"}
+							value={this.state.recipient}
 						/>
 						<TextInput
-							style={{width: 200, height: 40, backgroundColor: '#fff', borderColor: 'gray', borderWidth: 1}}
-							onChangeText={(text) => this.setState({text})}
-							value={this.state.text}
+							style={styles.textField}
+							onChangeText={(favor) => this.setState({favor})}
+							placeholder ={"  What's da favor?"}
+							value={this.state.favor}
 						/>
 						<TextInput
-							style={{width: 200, height: 40, backgroundColor: '#fff', borderColor: 'gray', borderWidth: 1}}
-							onChangeText={(text) => this.setState({text})}
-							value={"Amount?"}
+							style={styles.textField}
+							onChangeText={(amount) => this.setState({amount})}
+							placeholder={"  Amount?"}
+							value={this.state.amount}
 						/>
 
 					</View>
-					<View style={{flex: 2, alignItems: 'center', flexDirection: 'row'}}>
-						<View style={styles.box}>
-							<TouchableOpacity>
-								<Image
-								source={require('../images/request-button.png')}	
-								style={{flex:1, height: 100, width: 120, resizeMode: 'contain'}}
-								/>
-							</TouchableOpacity>	
-						</View>
-						<View style={styles.box}>
-							<TouchableOpacity>
-								<Image
-								source={require('../images/offer-button.png')}
-								style={{flex:1, height: 100, width: 120, resizeMode: 'contain'}}
-								/>
-							</TouchableOpacity>	
-						</View>
-					</View>
-				</View>
-<<<<<<< HEAD
-				<View  style={styles.container}>
-
-
-=======
-				<View style={{flex: 2, alignItems:'center'}}>
-					<Picker
-						style={styles.picker}
-						selectedValue={this.state.selected2}
-						onValueChange={this.onValueChange.bind(this, 'selected2')}
-						mode="dropdown"
-					>
-						<Picker.Item label="Bill" value="java" />
-						<Picker.Item label="Nelson" value="key1"/>
-						<Picker.Item label="Jessica" value="key1"/>
-						<Picker.Item label="Mike" value="key1"/>
-						<Picker.Item label="Carly" value="key1"/>
-						<Picker.Item label="Kim" value="key1"/>
-						<Picker.Item label="Justine" value="key1"/>
-						<Picker.Item label="George" value="key1"/>
-						<Picker.Item label="Walter" value="key1"/>
-					</Picker>
-				</View>
-				<View style={{flex: 2, alignItems:'center'}}>
-					<TextInput
-						placeholder="   What's da favor??"
-						style={styles.textField}
-						onChangeText={(text) => this.setState({text})}
-						value={this.state.text}
-					/>
-				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
 					<TouchableOpacity onPress={() => Alert.alert(
-            'You asked to \'' + this.state.text+'\'',
+            'You asked '+ this.state.recipient+ ' to ' +'\'' + this.state.favor+'\'',
             'They Will Be Notified Shortly')}>
 						<Image
 							source={require('../images/submit-button.png')}
 							style={{flex:1, height: 100, width:250, resizeMode: 'contain'}}
 						/>
 					</TouchableOpacity>
->>>>>>> 698b4aa53c3925491a1599f4857e033b68077a84
+				</View>
 				</View>
 			</ScrollView>
 			);
@@ -136,27 +125,20 @@ export default class ExchangeScreen extends Component {
 
 const styles = StyleSheet.create({
 	newRequestContainer: {
-	  borderRadius: 60,
-	  borderWidth: 5,
-	  borderColor: 'gray',
 	},
 	container: {
 		flex: 1,
-		paddingTop: 15,
-		backgroundColor: 'lightgreen',
+		backgroundColor: 'white'
 	},
 	box: {
 		flex: 1,
-		paddingTop: 20,
+		paddingTop: 10,
 		marginTop: 15,
-		marginBottom: 15,
+		marginBottom: 0,
 		alignItems: 'center',
 	},
 	picker: {
 		width: 250,
-<<<<<<< HEAD
-	}
-=======
 	},
 	textField: {
 		height: 40,
@@ -164,9 +146,9 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		borderWidth: 1,
 		backgroundColor: '#fff',
-		borderRadius: 5
+		borderRadius: 5,
+		margin: 5
 	},
->>>>>>> 698b4aa53c3925491a1599f4857e033b68077a84
 });
 
 
