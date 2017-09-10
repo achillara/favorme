@@ -44,6 +44,11 @@ export default class Login extends React.Component {
     title: "Login"
   };
 
+  test = () => {
+	console.log('here');
+	this.props.navigation.navigate('MainTab');
+  };
+
   apiRequest = () => {
    fetch('https://favor-me.herokuapp.com/api/accounts/login/token/',{
     method: 'POST',
@@ -95,7 +100,7 @@ export default class Login extends React.Component {
            value={this.state.password}
           />
 		</View>
-		<TouchableOpacity onPress={this.apiRequest}>
+		<TouchableOpacity onPress={this.test}>
 		<View style={styles.row}>
           <Image
           source = {require('../images/login-button.png')}
