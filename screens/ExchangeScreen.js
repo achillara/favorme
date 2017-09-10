@@ -30,7 +30,7 @@ export default class ExchangeScreen extends Component {
 		this.setState({mode: newMode});
 	}
 
-	onValueChange (key: string, value: string) {
+	onValueChange (key, value) {
 		const newState = {};
 		newState[key] = value;
 		this.setState(newState);

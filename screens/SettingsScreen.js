@@ -50,11 +50,14 @@ export default class SettingsScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    AsyncStorage.getItem('username')
+      .then((value) => this.setState({username: value}));
     this.state = {
       type: 'input',
       score: 'null',
-	  text: '',
+	    text: '',
       text2: '',
+      username: ''
     }
     this.showHide = this.showHide.bind(this);
   }
@@ -78,7 +81,7 @@ export default class SettingsScreen extends React.Component {
 				/>
 			</View>
 			<View style={{flex: 1, alignItems: 'center', paddingTop:15, backgroundColor:'white'}}>
-				<Text style={{fontSize: 30}}>Hello, Patrick Star!</Text>
+				<Text style={{fontSize: 30}}>Hello, {this.state.username}!</Text>
 				<Text style={{fontSize: 22, color: 'gray'}}>New York, NY</Text>
 				<View style={styles.box}>
 					<View style={{marginTop: 15}}>

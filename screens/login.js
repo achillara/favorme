@@ -45,7 +45,9 @@ export default class Login extends React.Component {
   };
 
   test = () => {
-	console.log('here');
+
+	AsyncStorage.setItem('username', this.state.username)
+      .then(() => console.log('Success!'));
 	this.props.navigation.navigate('MainTab');
   };
 
@@ -65,7 +67,6 @@ export default class Login extends React.Component {
      .then(resp => {
        console.log(resp.token);
        if(resp){
-            console.log('are u working');
             AsyncStorage.setItem('id_token', resp.token)
             .then(() => this.props.navigation.navigate('Home'))
             .catch((error) => console.log(error))
@@ -89,14 +90,20 @@ export default class Login extends React.Component {
 		</View>
 		<View style={[styles.row, {marginTop:40}]}>
           <TextInput
+            autoCapitalize="none"
           	placeholder='Username' type = 'username'
            	style={styles.textField}
-           	onChangeText={(text) => this.setState({username: text})}
+           	onChangeText={(text) => {
+           	  this.setState({username: text});
+              AsyncStorage.setItem('username', text)
+                .then(() => console.log('Success!'));
+            }}
            	value={this.state.username}
           />
 		</View>
 		<View style={styles.row}>
            <TextInput
+             secureTextEntry={true}
            placeholder='Password' type = 'password'
            style={styles.textField }
            onChangeText={(text) => this.setState({password: text})}
