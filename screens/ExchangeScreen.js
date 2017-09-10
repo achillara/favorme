@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, TextInput, Picker, StyleSheet, Text, Image, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import { ScrollView, Alert, TextInput, Picker, StyleSheet, Text, Image, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 const Item = Picker.Item;
@@ -64,20 +64,29 @@ export default class ExchangeScreen extends Component {
 						onValueChange={this.onValueChange.bind(this, 'selected2')}
 						mode="dropdown"
 					>
-						<Item label="hello" value="key0"/>
-						<Item label="world" value="key1"/>
+						<Picker.Item label="Bill" value="java" />
+						<Picker.Item label="Nelson" value="key1"/>
+						<Picker.Item label="Jessica" value="key1"/>
+						<Picker.Item label="Mike" value="key1"/>
+						<Picker.Item label="Carly" value="key1"/>
+						<Picker.Item label="Kim" value="key1"/>
+						<Picker.Item label="Justine" value="key1"/>
+						<Picker.Item label="George" value="key1"/>
+						<Picker.Item label="Walter" value="key1"/>
 					</Picker>
 				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
 					<TextInput
-						placeholder="What's da favor??"
+						placeholder="   What's da favor??"
 						style={styles.textField}
 						onChangeText={(text) => this.setState({text})}
 						value={this.state.text}
 					/>
 				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => Alert.alert(
+            'You asked to \'' + this.state.text+'\'',
+            'They Will Be Notified Shortly')}>
 						<Image
 							source={require('../images/submit-button.png')}
 							style={{flex:1, height: 100, width:250, resizeMode: 'contain'}}
@@ -110,7 +119,8 @@ const styles = StyleSheet.create({
 		width: 250,
 		borderColor: 'gray',
 		borderWidth: 1,
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
+		borderRadius: 5
 	},
 });
 
