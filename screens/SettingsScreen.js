@@ -7,8 +7,10 @@ import {
   Button,
   Alert,
   AsyncStorage,
-  Image} from 'react-native';
-var AutosizeInput = require('react-input-autosize');
+  Image,
+  View,
+  TouchableOpacity,
+  TextInput} from 'react-native';
 
 const userValues = ["name", "age", "location"];
 
@@ -45,23 +47,19 @@ export default class SettingsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
-    };
-  };
-  getInitialState () {
-    return {
-      value1: '',
-      value2: 'example',
-      value3: 0,
-      value4: '',
-      value5: '',
-    };
-  };
-  updateInputValue (input, event) {
-    const newState = {};
-    newState[input] = event.target.value;
-    this.setState(newState);
-  };
+      type: 'input',
+      score: 'null'
+    }
+    this.showHide = this.showHide.bind(this);
+  }
+  showHide(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      type: this.state.type === 'input' ? 'password' : 'input'
+    })  
+  }
+
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
@@ -69,24 +67,40 @@ export default class SettingsScreen extends React.Component {
       <ScrollView style={styles.container} contentContainerStyle={styles.center}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
-        <Image style={styles.profileImg} source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}/>
-        <Text ref="fullname" style={styles.header}>Patrick Star</Text>
+        <TouchableOpacity>
+          <Image style={styles.profileImg} source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}/>
+        </TouchableOpacity>
+        <Text ref="fullname" style={styles.headerName}>Patrick Star</Text>
         <Text ref="birthday" style={styles.header}>20 Years Old</Text>
         <Text ref="hometown" style={styles.header}>New York, NY</Text>
 
+        <Text>Find Friends</Text>
+        <View style={{padding: 10}}>
+          <Text>Change Password</Text>
+          <TextInput
+            type="password"
+            style={{height: 40}}
+            placeholder="New Password"
+            onChangeText={(text) => this.setState({text})}
+          />
+          <TextInput
+            type="password"
+            style={{height: 40}}
+            placeholder="Confirm Password"
+            onChangeText={(text) => this.setState({text})}
+          />
+          <Button
+            onPress={() => {Alert.alert("saving pw")}}
+            title="Save Password"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
+        </View>
 
-        <Button
-          onPress={() => {save("hi", "foo")}}
-          title="Save"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <Button
-          onPress={() => {read("hi")}}
-          title="Save"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+
+      <Text>Find Friends</Text>
+
+
 
 
       </ScrollView>
@@ -95,7 +109,14 @@ export default class SettingsScreen extends React.Component {
   }
 }
 
+/*
+      <label className="password">Password
+      <input type={this.state.type} className="password__input" onChange={this.passwordStrength}/>
+      <span className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+      <span className="password__strength" data-score={this.state.score} />
+      </label>
 
+*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -111,7 +132,11 @@ const styles = StyleSheet.create({
   center: {
     alignItems: 'center',
   },
+  headerName: {
+    fontSize:35
+  },
   header: {
+    fontSize: 20
   },
 
 });
