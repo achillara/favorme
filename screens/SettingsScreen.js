@@ -42,13 +42,19 @@ function read(uniqKey){
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Settings',
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
+      />,
   };
   constructor(props) {
     super(props);
     this.state = {
       type: 'input',
-      score: 'null'
+      score: 'null',
+	  text: '',
+      text2: '',
     }
     this.showHide = this.showHide.bind(this);
   }
@@ -64,46 +70,42 @@ export default class SettingsScreen extends React.Component {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
     return (
-      <ScrollView style={styles.container} contentContainerStyle={styles.center}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <TouchableOpacity>
-          <Image style={styles.profileImg} source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}/>
-        </TouchableOpacity>
-        <Text ref="fullname" style={styles.headerName}>Patrick Star</Text>
-        <Text ref="birthday" style={styles.header}>20 Years Old</Text>
-        <Text ref="hometown" style={styles.header}>New York, NY</Text>
-
-        <Text>Find Friends</Text>
-        <View style={{padding: 10}}>
-          <Text>Change Password</Text>
-          <TextInput
-            type="password"
-            style={{height: 40}}
-            placeholder="New Password"
-            onChangeText={(text) => this.setState({text})}
-          />
-          <TextInput
-            type="password"
-            style={{height: 40}}
-            placeholder="Confirm Password"
-            onChangeText={(text) => this.setState({text})}
-          />
-          <Button
-            onPress={() => {Alert.alert("saving pw")}}
-            title="Save Password"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-          />
-        </View>
-
-
-      <Text>Find Friends</Text>
-
-
-
-
-      </ScrollView>
+		<ScrollView style={{backgroundColor: 'white'}}>
+			<View style={{alignItems: 'center', backgroundColor: 'palegreen'}}>
+				<Image 
+					style={styles.profile}
+					source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}
+				/>
+			</View>
+			<View style={{flex: 1, alignItems: 'center', paddingTop:15, backgroundColor:'white'}}>
+				<Text style={{fontSize: 30}}>Hello, Patrick Star!</Text>
+				<Text style={{fontSize: 22, color: 'gray'}}>New York, NY</Text>
+				<View style={styles.box}>
+					<View style={{marginTop: 15}}>
+						<Text style={{fontSize: 20}}>Change Password:</Text>
+					</View>
+					<TextInput
+            			type="password"
+            			style={styles.textField}
+            			placeholder="New Password"
+            			onChangeText={(text) => this.setState({text})}
+					/>
+					<TextInput
+            			type="password"
+            			style={styles.textField}
+            			placeholder="Confirm Password"
+            			onChangeText={(text2) => this.setState({text2})}
+					/>
+					<TouchableOpacity>
+						<View
+							style={{backgroundColor: 'palegreen', height:40, width: 200, alignItems: 'center'}}
+						>
+							<Text style={{fontSize: 20, marginTop: 5}}>SUBMIT</Text>
+						</View>
+					</TouchableOpacity>
+				</View>
+			</View>
+		</ScrollView>    
     );
 
   }
@@ -118,26 +120,27 @@ export default class SettingsScreen extends React.Component {
 
 */
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-  profileImg: {
+  profile: {
     height: 120,
-    borderRadius: 50,
+    borderRadius: 60,
+	borderWidth: 5,
+	borderColor: 'gray',
     width: 120,
-    marginTop: 10,
+    marginTop: 50,
+	marginBottom: 20
   },
-  center: {
-    alignItems: 'center',
+  box: {
+	alignItems: 'center'
   },
-  headerName: {
-    fontSize:35
-  },
-  header: {
-    fontSize: 20
-  },
-
+  textField: {
+	height: 40,
+	width: 250,
+	backgroundColor: 'white',
+	borderColor: 'gray',
+	borderRadius: 1,
+	borderWidth: 1,
+	color: 'gray',
+	margin: 5
+  }
 });
 

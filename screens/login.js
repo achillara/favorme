@@ -41,7 +41,12 @@ export default class Login extends React.Component {
     };
   }
   static navigationOptions = {
-    title: "Login"
+    title: 'Login', 
+  };
+
+  test = () => {
+	console.log('here');
+	this.props.navigation.navigate('MainTab');
   };
 
   apiRequest = () => {
@@ -76,9 +81,15 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-		<View style={[styles.row, {marginTop:100}]}>
+		<View style={styles.row}>
+		    <Image
+        		source={require('../images/logo.png')}
+				style={{resizeMode: 'contain', width:200,height:120, marginTop:5}}		        
+      		/>
+		</View>
+		<View style={[styles.row, {marginTop:40}]}>
           <TextInput
-          	placeholder='Username'
+          	placeholder='Username' type = 'username'
            	style={styles.textField}
            	onChangeText={(text) => this.setState({username: text})}
            	value={this.state.username}
@@ -92,11 +103,11 @@ export default class Login extends React.Component {
            value={this.state.password}
           />
 		</View>
-		<TouchableOpacity onPress={this.apiRequest}>
-		<View style={styles.row}>
+		<TouchableOpacity onPress={this.test}>
+		<View style={[styles.row, {marginTop:-30}]}>
           <Image
           source = {require('../images/login-button.png')}
-          style={{resizeMode: 'contain', width:300,marginTop:100}}
+          style={{resizeMode: 'contain', width:250,marginTop:100}}
           />
 		</View>
         </TouchableOpacity>
@@ -122,5 +133,6 @@ const styles = StyleSheet.create({
 	width: 250,
 	borderColor: 'gray',
 	borderWidth: 1,
+	borderRadius: 5,
   },
 });

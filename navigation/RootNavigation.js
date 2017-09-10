@@ -7,11 +7,21 @@ import registerForPushNotificationsAsync from '../api/registerForPushNotificatio
 import Login from '../screens/login';
 
 
+import HomeScreen from '../screens/HomeScreen';
+import FeedScreen from '../screens/FeedScreen';
+import ExchangeScreen from '../screens/ExchangeScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+
 const RootStackNavigator = StackNavigator(
   {
     Main: {
       screen: Login,
     },
+	Home: { screen: HomeScreen },
+	Feed: { screen: FeedScreen },
+	Exchange: { screen: ExchangeScreen },
+	Settings: { screen: SettingsScreen },
+ 	MainTab: { screen: MainTabNavigator},
   },
   {
     navigationOptions: () => ({
