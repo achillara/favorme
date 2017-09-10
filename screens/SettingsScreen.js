@@ -42,7 +42,11 @@ function read(uniqKey){
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Settings',
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
+      />,
   };
   constructor(props) {
     super(props);

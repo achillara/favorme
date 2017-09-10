@@ -7,7 +7,11 @@ const Item = Picker.Item;
 export default class ExchangeScreen extends Component {
 	
 	static navigationOptions = {
-		title: 'Exchange',
+    	title: 
+    	<Image
+        	source={require('../images/logo.png')}
+			style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
+      	/>,
 	};
 
 	state = {
@@ -16,7 +20,7 @@ export default class ExchangeScreen extends Component {
 		selected3: 'key1',
 		color: 'red',
 		mode: Picker.MODE_DIALOG,
-		text: "What's da favor?",
+		text: "",
 	};	
 
 	changeMode () {
@@ -67,7 +71,8 @@ export default class ExchangeScreen extends Component {
 				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
 					<TextInput
-						style={{width: 200, height: 40, backgroundColor: '#fff', borderColor: 'gray', borderWidth: 1}}
+						placeholder="What's da favor??"
+						style={styles.textField}
 						onChangeText={(text) => this.setState({text})}
 						value={this.state.text}
 					/>
@@ -92,7 +97,14 @@ const styles = StyleSheet.create({
 	},
 	picker: {
 		width: 250,
-	}
+	},
+	textField: {
+		height: 40,
+		width: 250,
+		borderColor: 'gray',
+		borderWidth: 1,
+		backgroundColor: '#fff'
+	},
 });
 
 
