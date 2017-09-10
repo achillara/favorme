@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   View,
   ListView,
+  Modal,
+  TouchableHighlight
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import Row from './Rows';
@@ -22,6 +24,11 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 export default class HomeScreen extends React.Component {
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   static navigationOptions = {
     title: 
     <Image
@@ -29,24 +36,28 @@ export default class HomeScreen extends React.Component {
 		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
       />,
     headerRight:
-    <Ionicons
-      name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'}
-      size={28}
-      style={{ marginBottom: -3 }}
-    />
+    <TouchableOpacity>
+      <Ionicons
+        name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'}
+        size={28}
+        style={{ marginBottom: -3, marginRight: 15 }}
+      />
+    </TouchableOpacity>
+
 
   };
-  
+
+
+
+
+
   constructor(props) {
     super(props);
-
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(data),
     };
   }
-
-
 
   render() {
     return (

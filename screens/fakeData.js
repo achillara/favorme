@@ -1,6 +1,7 @@
 export default data = [
   {
     "gender": "male",
+    "favor": "doing the SAT for me",
     "name": {
       "title": "mr",
       "first": "aiden",
@@ -39,6 +40,7 @@ export default data = [
   },
   {
     "gender": "male",
+    "favor":"bailing me out of jail",
     "name": {
       "title": "mr",
       "first": "mario",
@@ -77,6 +79,7 @@ export default data = [
   },
   {
     "gender": "male",
+    "favor":"keeping a secret",
     "name": {
       "title": "mr",
       "first": "joseph",
@@ -115,6 +118,7 @@ export default data = [
   },
   {
     "gender": "female",
+    "favor":"buying groceries",
     "name": {
       "title": "ms",
       "first": "tina",
@@ -153,6 +157,7 @@ export default data = [
   },
   {
     "gender": "female",
+    "favor":"doing nothing",
     "name": {
       "title": "miss",
       "first": "irma",
@@ -191,6 +196,7 @@ export default data = [
   },
   {
     "gender": "male",
+    "favor":"teaching me how to dance",
     "name": {
       "title": "mr",
       "first": "lloyd",
@@ -229,6 +235,7 @@ export default data = [
   },
   {
     "gender": "female",
+    "favor": "giving a good rec",
     "name": {
       "title": "mrs",
       "first": "katherine",
@@ -267,6 +274,7 @@ export default data = [
   },
   {
     "gender": "male",
+    "favor":"getting my mail for me",
     "name": {
       "title": "mr",
       "first": "derek",
@@ -305,6 +313,7 @@ export default data = [
   },
   {
     "gender": "female",
+    "favor": "watching her cat for a month",
     "name": {
       "title": "mrs",
       "first": "janice",
