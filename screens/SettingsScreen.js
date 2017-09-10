@@ -85,25 +85,27 @@ export default class SettingsScreen extends React.Component {
 				<Text style={{fontSize: 22, color: 'gray'}}>New York, NY</Text>
 				<View style={styles.box}>
 					<View style={{marginTop: 15}}>
-						<Text style={{fontSize: 20}}>Change Password:</Text>
+						<Text style={{fontSize: 15}}>Change Password</Text>
 					</View>
 					<TextInput
             			type="password"
+                  secureTextEntry={true}
             			style={styles.textField}
-            			placeholder="New Password"
+            			placeholder="   New Password"
             			onChangeText={(text) => this.setState({text})}
 					/>
 					<TextInput
             			type="password"
+                  secureTextEntry={true}
             			style={styles.textField}
-            			placeholder="Confirm Password"
+            			placeholder="   Confirm Password"
             			onChangeText={(text2) => this.setState({text2})}
 					/>
 					<TouchableOpacity>
 						<View
-							style={{backgroundColor: 'palegreen', height:40, width: 200, alignItems: 'center'}}
+							style={{borderRadius: 5, backgroundColor: 'palegreen', height:40, width: 200, alignItems: 'center'}}
 						>
-							<Text style={{fontSize: 20, marginTop: 5}}>SUBMIT</Text>
+							<Text style={{fontSize: 20, marginTop: 5}}>Reset</Text>
 						</View>
 					</TouchableOpacity>
 				</View>
@@ -129,21 +131,21 @@ const styles = StyleSheet.create({
 	borderWidth: 5,
 	borderColor: 'gray',
     width: 120,
-    marginTop: 50,
+    marginTop: 30,
 	marginBottom: 20
   },
   box: {
 	alignItems: 'center'
   },
   textField: {
-	height: 40,
-	width: 250,
-	backgroundColor: 'white',
-	borderColor: 'gray',
-	borderRadius: 1,
-	borderWidth: 1,
-	color: 'gray',
-	margin: 5
-  }
+    height: 40,
+    width: 250,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginTop: 15,
+    marginBottom: 15
+
+  },
 });
 

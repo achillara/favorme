@@ -91,7 +91,7 @@ export default class Login extends React.Component {
 		<View style={[styles.row, {marginTop:40}]}>
           <TextInput
             autoCapitalize="none"
-          	placeholder='Username' type = 'username'
+          	placeholder='   Username' type = 'username'
            	style={styles.textField}
            	onChangeText={(text) => {
            	  this.setState({username: text});
@@ -104,7 +104,7 @@ export default class Login extends React.Component {
 		<View style={styles.row}>
            <TextInput
              secureTextEntry={true}
-           placeholder='Password' type = 'password'
+           placeholder='   Password' type = 'password'
            style={styles.textField }
            onChangeText={(text) => this.setState({password: text})}
            value={this.state.password}
