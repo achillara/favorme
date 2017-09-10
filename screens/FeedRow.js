@@ -5,12 +5,14 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    padding: 25,
     flexDirection: 'row',
+    marginRight: 15,
     alignItems: 'center',
   },
   text: {
     marginLeft: 12,
+    marginRight: 15,
     fontSize: 16,
   },
   photo: {
@@ -27,23 +29,17 @@ const rightstyles = StyleSheet.create({
     flexDirection: 'row',
   }
 });
-const newright = StyleSheet.create({
-  container:{
-    flex: 1,
-    marginRight: 3,
-    flexDirection: 'row',
-    alignItems:'flex-end',
-  }
-});
 
 
-function buildRow(score, otherFirst) {
+
+
+function buildRow(score, otherFirst, favor) {
   var innerText = ""
   if(score > 0) {
-    innerText = `${otherFirst} gave you ${score} tokens`
+    innerText = `${otherFirst} gave you ${score} tokens for ${favor}`
   }
   else {
-    innerText = `I gave ${otherFirst} ${-score} tokens`
+    innerText = `I gave ${otherFirst} ${-score} tokens for ${favor}`
   }
   return innerText;
 }
@@ -52,7 +48,7 @@ const Row = (props) => (
   <View style = {{flexDirection:"row"}}>
   <View style={styles.container}>
     <Image source={{ uri: props.picture.large}} style={styles.photo} />
-      <Text style={styles.text}>{`${buildRow(props.score, props.name.first)}`}</Text>   
+      <Text style={styles.text}>{`${buildRow(props.score, props.name.first, props.favor)}`}</Text>   
     </View>
   </View>
 
