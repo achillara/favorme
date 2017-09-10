@@ -77,7 +77,7 @@ export default class SettingsScreen extends React.Component {
 			<View style={{alignItems: 'center', backgroundColor: 'palegreen'}}>
 				<Image 
 					style={styles.profile}
-					source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}
+					source={{uri: 'https://healthyceleb.com/wp-content/uploads/2016/01/Jimmy-Fallon-headshot.jpg'}}
 				/>
 			</View>
 			<View style={{flex: 1, alignItems: 'center', paddingTop:15, backgroundColor:'white'}}>
