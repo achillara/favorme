@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
   profile: {
     height: 120,
     borderRadius: 60,
-	borderWidth: 5,
-	borderColor: 'gray',
+	  borderWidth: 5,
+	  borderColor: 'gray',
     width: 120,
     marginTop: 50,
 	marginBottom: 20
