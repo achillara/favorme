@@ -17,6 +17,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 
+//ios-add
+//md-add
 
 
 export default class HomeScreen extends React.Component {
@@ -26,6 +28,13 @@ export default class HomeScreen extends React.Component {
         source={require('../images/logo.png')}
         
       />,
+    headerRight:
+    <Ionicons
+      name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'}
+      size={28}
+      style={{ marginBottom: -3 }}
+    />
+
   };
   
   constructor(props) {

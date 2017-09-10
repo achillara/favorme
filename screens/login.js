@@ -60,13 +60,10 @@ export default class Login extends React.Component {
      .then(resp => {
        console.log(resp.token);
        if(resp){
-          try {
             console.log('are u working');
-             AsyncStorage.setItem('id_token', resp.token);
-             this.props.navigation.navigate('MainTab')
-            } catch (error) {
-              console.log(error);
-            }
+            AsyncStorage.setItem('id_token', resp.token)
+            .then(() => this.props.navigation.navigate('Home'))
+            .catch((error) => console.log(error))
        }
      })
      .catch(function(error) {
