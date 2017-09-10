@@ -16,6 +16,8 @@ import Row from './Rows';
 import data from './fakeData';
 import { Ionicons } from '@expo/vector-icons';
 
+import ExchangeScreen from '../screens/ExchangeScreen';
+
 
 
 
@@ -33,9 +35,8 @@ export default class HomeScreen extends React.Component {
     title: 
     <Image
         source={require('../images/logo.png')}
-		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
-      />,
-    headerRight:
+    		style={{resizeMode:'contain', width:100,height:50, marginTop:5}} />,
+   headerRight:
     <TouchableOpacity>
       <Ionicons
         name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'}
@@ -43,8 +44,8 @@ export default class HomeScreen extends React.Component {
         style={{ marginBottom: -3, marginRight: 15 }}
       />
     </TouchableOpacity>
-
-
+      
+    
   };
 
 
@@ -66,13 +67,65 @@ export default class HomeScreen extends React.Component {
       <ListView
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(data) => <Row {...data} />}
+        renderRow={this._renderRow.bind(this)} 
+
+        /*renderRow={(data) => <Row {...data} />}*/
       />
       </View>
 
     );
 
   }
+
+  getUnderLayColor(score){
+    console.log(score)
+    if(score <= -30){
+      return  "#99FF99"
+      ;
+    }
+    else if(score < 30 && score > -30){
+      return "#FFFF99";
+    }
+    else if(score >= 30){
+      console.log('wtf');
+      return "#FF3333";
+     
+    }
+  }
+
+_renderRow(row, sectionId, rowId, highlightRow) {
+    var self = this;
+    return (
+      <TouchableHighlight activeOpacity={80}
+                underlayColor={this.getUnderLayColor(row.score)}
+                onPress={function() {
+                  highlightRow(sectionId, rowId)
+
+                  
+                }}>
+
+        <View style = {{flexDirection:"row"}}>
+            <View style={[styles.containerr, {marginLeft:30}]}>
+            <View>
+                <Image source={{ uri: row.picture.large}} style={styles.photo} />
+            </View>
+            <View>
+                <Text style={styles.text}>
+                    {`${row.name.first}`}
+                </Text>
+            </View>
+            </View>
+            <View style = {[styles.containerr, {justifyContent:'center'}]}>
+              <Text style={styles.text}>
+                  {`${row.score}`}
+              </Text>
+            </View>
+          </View>
+      </TouchableHighlight>
+    )
+  }
+
+
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
@@ -201,7 +254,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  containerr: {
+    flex: 1,
+    padding: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    marginLeft: 12,
+    fontSize: 16,
+  },
+  photo: {
+    height: 60,
+    width: 60,
+    borderRadius: 30,
+  },
 });
+
+
 
 
 
