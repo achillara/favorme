@@ -36,13 +36,23 @@ const newright = StyleSheet.create({
   }
 });
 
+
+function buildRow(score, otherFirst) {
+  var innerText = ""
+  if(score > 0) {
+    innerText = `${otherFirst} gave you ${score} tokens`
+  }
+  else {
+    innerText = `I gave ${otherFirst} ${-score} tokens`
+  }
+  return innerText;
+}
+
 const Row = (props) => (
   <View style = {{flexDirection:"row"}}>
   <View style={styles.container}>
     <Image source={{ uri: props.picture.large}} style={styles.photo} />
-    <Text style={styles.text}>
-      {`${props.name.first} gave you ${props.score} `}
-    </Text>
+      <Text style={styles.text}>{`${buildRow(props.score, props.name.first)}`}</Text>   
     </View>
   </View>
 
