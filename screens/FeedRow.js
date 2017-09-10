@@ -51,10 +51,6 @@ const Row = (props) => (
       <Text style={styles.text}>{`${buildRow(props.score, props.name.first, props.favor)}`}</Text>   
     </View>
   </View>
-
-  
-
-  
 );
 
 export default Row;

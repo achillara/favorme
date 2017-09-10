@@ -4,13 +4,13 @@ import {
 	TextInput, 
 	Picker, 
 	StyleSheet,
-	 Text, 
-	 Image, 
-	 TouchableOpacity, 
-	 TouchableWithoutFeedback,
-	 View,  
-	 ListView,
-	 Alert,
+	Text, 
+	Image, 
+	TouchableOpacity, 
+	TouchableWithoutFeedback,
+	View,  
+	ListView,
+ 	Alert,
  } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
@@ -37,6 +37,7 @@ export default class ExchangeScreen extends Component {
 		number: 0,
 		offerPath: require('../images/offer-button.png'),
 		requestPath : require('../images/request-button.png'),
+		verb : ""
 	};	
 
 	changeMode () {
@@ -56,10 +57,12 @@ export default class ExchangeScreen extends Component {
 		if (name === 'offer'){
 			this.state.offerPath = require('../images/offer-button-active.png');
 			this.state.requestPath = require('../images/request-button.png');
+			this.state.verb = "offered"
 		}
 		else{
 			this.state.offerPath = require('../images/offer-button.png');
 			this.state.requestPath = require('../images/request-button-active.png');
+			this.state.verb = "requested"
 		}
 	}
 
@@ -70,18 +73,18 @@ export default class ExchangeScreen extends Component {
 				<View style={styles.newRequestContainer}>
 					<View style={{flex: 2, flexDirection: 'row'}}>
 						<View style={styles.box}>
-							<TouchableOpacity onPress={this.changeButton('request')}>
+							<TouchableOpacity onPress={() => {this.changeButton('request')}}>
 								<Image
 								source={this.state.requestPath}	
-								style={{flex:1, height: 100, width: 120, marginRight: -50, resizeMode: 'contain'}}
+								style={{flex:1, height: 100, width: 120, marginRight: -60, resizeMode: 'contain'}}
 								/>
 							</TouchableOpacity>	
 						</View>
 						<View style={styles.box}>
-							<TouchableOpacity onPress= {this.changeButton('offer') }>
+							<TouchableOpacity onPress= {() => {this.changeButton('offer')}}>
 								<Image
 								source={this.state.offerPath}
-								style={{flex:1, height: 100, width: 120, resizeMode: 'contain', marginLeft: -50}}
+								style={{flex:1, height: 100, width: 120, resizeMode: 'contain', marginLeft: -60}}
 								/>
 							</TouchableOpacity>	
 						</View>
@@ -109,8 +112,8 @@ export default class ExchangeScreen extends Component {
 					</View>
 				<View style={{flex: 2, alignItems:'center'}}>
 					<TouchableOpacity onPress={() => Alert.alert(
-            'You asked '+ this.state.recipient+ ' to ' +'\'' + this.state.favor+'\'',
-            'They Will Be Notified Shortly')}>
+			            'You ' + this.state.verb + " " + this.state.recipient+ ' to ' +'\'' + 
+			            this.state.favor+'\' for ' + this.state.amount + ' tokens', 'They Will Be Notified Shortly')}>
 						<Image
 							source={require('../images/submit-button.png')}
 							style={{flex:1, height: 100, width:250, resizeMode: 'contain'}}
