@@ -13,6 +13,8 @@ export default class App extends React.Component {
     this._loadAssetsAsync();
   }
 
+  
+
   render() {
     if (!this.state.assetsAreLoaded && !this.props.skipLoadingScreen) {
       return <AppLoading />;

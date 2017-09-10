@@ -7,8 +7,10 @@ import {
   Button,
   Alert,
   AsyncStorage,
-  Image} from 'react-native';
-var AutosizeInput = require('react-input-autosize');
+  Image,
+  View,
+  TouchableOpacity,
+  TextInput} from 'react-native';
 
 const userValues = ["name", "age", "location"];
 
@@ -40,78 +42,105 @@ function read(uniqKey){
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Settings',
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
+      />,
   };
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
-    };
-  };
-  getInitialState () {
-    return {
-      value1: '',
-      value2: 'example',
-      value3: 0,
-      value4: '',
-      value5: '',
-    };
-  };
-  updateInputValue (input, event) {
-    const newState = {};
-    newState[input] = event.target.value;
-    this.setState(newState);
-  };
+      type: 'input',
+      score: 'null',
+	  text: '',
+      text2: '',
+    }
+    this.showHide = this.showHide.bind(this);
+  }
+  showHide(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({
+      type: this.state.type === 'input' ? 'password' : 'input'
+    })  
+  }
+
   render() {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
     return (
-      <ScrollView style={styles.container} contentContainerStyle={styles.center}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <Image style={styles.profileImg} source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}/>
-        <Text ref="fullname" style={styles.header}>Patrick Star</Text>
-        <Text ref="birthday" style={styles.header}>20 Years Old</Text>
-        <Text ref="hometown" style={styles.header}>New York, NY</Text>
-
-
-        <Button
-          onPress={() => {save("hi", "foo")}}
-          title="Save"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <Button
-          onPress={() => {read("hi")}}
-          title="Save"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-
-
-      </ScrollView>
+		<ScrollView style={{backgroundColor: 'white'}}>
+			<View style={{alignItems: 'center', backgroundColor: 'palegreen'}}>
+				<Image 
+					style={styles.profile}
+					source={{uri: 'https://vignette.wikia.nocookie.net/nickelodeon/images/4/46/Patrick.jpg/revision/latest?cb=20110418032110'}}
+				/>
+			</View>
+			<View style={{flex: 1, alignItems: 'center', paddingTop:15, backgroundColor:'white'}}>
+				<Text style={{fontSize: 30}}>Hello, Patrick Star!</Text>
+				<Text style={{fontSize: 22, color: 'gray'}}>New York, NY</Text>
+				<View style={styles.box}>
+					<View style={{marginTop: 15}}>
+						<Text style={{fontSize: 20}}>Change Password:</Text>
+					</View>
+					<TextInput
+            			type="password"
+            			style={styles.textField}
+            			placeholder="New Password"
+            			onChangeText={(text) => this.setState({text})}
+					/>
+					<TextInput
+            			type="password"
+            			style={styles.textField}
+            			placeholder="Confirm Password"
+            			onChangeText={(text2) => this.setState({text2})}
+					/>
+					<TouchableOpacity>
+						<View
+							style={{backgroundColor: 'palegreen', height:40, width: 200, alignItems: 'center'}}
+						>
+							<Text style={{fontSize: 20, marginTop: 5}}>SUBMIT</Text>
+						</View>
+					</TouchableOpacity>
+				</View>
+			</View>
+		</ScrollView>    
     );
 
   }
 }
 
+/*
+      <label className="password">Password
+      <input type={this.state.type} className="password__input" onChange={this.passwordStrength}/>
+      <span className="password__show" onClick={this.showHide}>{this.state.type === 'input' ? 'Hide' : 'Show'}</span>
+      <span className="password__strength" data-score={this.state.score} />
+      </label>
 
+*/
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-  profileImg: {
+  profile: {
     height: 120,
-    borderRadius: 50,
+    borderRadius: 60,
+	borderWidth: 5,
+	borderColor: 'gray',
     width: 120,
-    marginTop: 10,
+    marginTop: 50,
+	marginBottom: 20
   },
-  center: {
-    alignItems: 'center',
+  box: {
+	alignItems: 'center'
   },
-  header: {
-  },
-
+  textField: {
+	height: 40,
+	width: 250,
+	backgroundColor: 'white',
+	borderColor: 'gray',
+	borderRadius: 1,
+	borderWidth: 1,
+	color: 'gray',
+	margin: 5
+  }
 });
+

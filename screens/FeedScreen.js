@@ -17,12 +17,7 @@ let foo = "fft" //let or const
 var user = ""
 
 
-
-export default class LinksScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Feed',
-  };
-
+{/*
   constructor(props) {
     super(props);
 
@@ -31,9 +26,9 @@ export default class LinksScreen extends React.Component {
       dataSource: ds.cloneWithRows(data),
     }; 
   }
+*/}
 
-  render() {
-    return (
+{/*
       <View style={styles.container}>
         <ListView
           style={styles.container}
@@ -41,6 +36,24 @@ export default class LinksScreen extends React.Component {
           renderRow={(data) => <Row {...data} />}
         />
       </View>
+
+*/}
+export default class LinksScreen extends React.Component {
+  static navigationOptions = {
+    title: 
+    <Image
+        source={require('../images/logo.png')}
+		style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
+      />,
+  };
+
+
+  render() {
+    return (
+		<View style={styles.container}>
+			<Text>Hello</Text>
+		</View>
+
     );
   }
 }

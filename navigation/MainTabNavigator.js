@@ -10,6 +10,8 @@ import FeedScreen from '../screens/FeedScreen';
 import ExchangeScreen from '../screens/ExchangeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+
+
 export default TabNavigator(
   {
     Home: {
