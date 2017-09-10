@@ -40,6 +40,7 @@ export default class LinksScreen extends React.Component {
           style={styles.container}
           dataSource={this.state.dataSource}
           renderRow={(data) => <Row {...data} />}
+          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         />
 		</View>
 
@@ -52,5 +53,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#8E8E8E',
   },
 });
