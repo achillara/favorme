@@ -28,6 +28,7 @@ const App = StackNavigator({
   Feed: { screen: FeedScreen },
   Exchange: { screen: ExchangeScreen },
   Settings: { screen: SettingsScreen },
+  MainTab: { screen: MainTabNavigator},
 });
 
 export default class Login extends React.Component {
@@ -56,13 +57,13 @@ export default class Login extends React.Component {
     })
    })
      .then(res => res.json())
-     .then(function(resp){
+     .then(resp => {
        console.log(resp.token);
        if(resp){
           try {
             console.log('are u working');
              AsyncStorage.setItem('id_token', resp.token);
-             this.props.navigation.navigate('MainTabNavigator')
+             this.props.navigation.navigate('MainTab')
             } catch (error) {
               console.log(error);
             }
@@ -73,28 +74,34 @@ export default class Login extends React.Component {
      });
    };
 
-  
+ 
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.apiRequest}>
+		<View style={[styles.row, {marginTop:100}]}>
           <TextInput
-          placeholder='Username'
-           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-           onChangeText={(text) => this.setState({username: text})}
-           value={this.state.username}
+          	placeholder='Username'
+           	style={styles.textField}
+           	onChangeText={(text) => this.setState({username: text})}
+           	value={this.state.username}
           />
+		</View>
+		<View style={styles.row}>
            <TextInput
            placeholder='Password' type = 'password'
-           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+           style={styles.textField }
            onChangeText={(text) => this.setState({password: text})}
            value={this.state.password}
           />
+		</View>
+		<TouchableOpacity onPress={this.apiRequest}>
+		<View style={styles.row}>
           <Image
           source = {require('../images/login-button.png')}
-          style={{height:100,width:200,marginTop:150}}
+          style={{resizeMode: 'contain', width:300,marginTop:100}}
           />
+		</View>
         </TouchableOpacity>
       </View>
     );
@@ -107,5 +114,16 @@ const styles = StyleSheet.create({
     alignItems:"center",
     paddingTop: 15,
     backgroundColor: '#fff',
+  },
+  row: {
+	marginTop: 15,
+	marginBottom: 15,
+	alignItems:'center',
+  },
+  textField: {
+	height: 40,
+	width: 250,
+	borderColor: 'gray',
+	borderWidth: 1,
   },
 });
