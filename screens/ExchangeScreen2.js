@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { ScrollView, TextInput, Picker, StyleSheet, Text, Image, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
@@ -7,11 +8,7 @@ const Item = Picker.Item;
 export default class ExchangeScreen extends Component {
 	
 	static navigationOptions = {
-    	title: 
-    	<Image
-        	source={require('../images/logo.png')}
-			style={{resizeMode: 'contain', width:100,height:50, marginTop:5}}		        
-      	/>,
+		title: 'Exchange',
 	};
 
 	state = {
@@ -20,7 +17,7 @@ export default class ExchangeScreen extends Component {
 		selected3: 'key1',
 		color: 'red',
 		mode: Picker.MODE_DIALOG,
-		text: "",
+		text: "What's da favor?",
 	};	
 
 	changeMode () {
@@ -58,6 +55,7 @@ export default class ExchangeScreen extends Component {
 					</View>
 				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
+					<Text>THE FRIEND?</Text>
 					<Picker
 						style={styles.picker}
 						selectedValue={this.state.selected2}
@@ -70,30 +68,46 @@ export default class ExchangeScreen extends Component {
 				</View>
 				<View style={{flex: 2, alignItems:'center'}}>
 					<TextInput
-						placeholder="What's da favor??"
-						style={styles.textField}
+						style={{width: 200, height: 40, backgroundColor: '#fff', borderColor: 'gray', borderWidth: 1}}
 						onChangeText={(text) => this.setState({text})}
 						value={this.state.text}
 					/>
 				</View>
-				<View style={{flex: 2, alignItems:'center'}}>
-					<TouchableOpacity>
-						<Image
-							source={require('../images/submit-button.png')}
-							style={{flex:1, height: 100, width:250, resizeMode: 'contain'}}
-						/>
-					</TouchableOpacity>
-				</View>
 			</ScrollView>
 			);
 	}
+=======
+import React from 'react';
+import { ScrollView, StyleSheet, Text,Image} from 'react-native';
+import { ExpoLinksView } from '@expo/samples';
+
+export default class ExchangeScreen extends React.Component {
+  static navigationOptions = {
+   title: 
+    <Image
+        source={require('../images/logo.png')}
+      />
+     
+  };
+
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        {/* Go ahead and delete ExpoLinksView and replace it with your
+           * content, we just wanted to provide you with some helpful links */}
+        <Text>Welcome to Exchange, request and send tokens here</Text>
+
+      </ScrollView>
+    );
+  }
+>>>>>>> 78dba8724a406fc3dc00b08d22b2858fbefefe29
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 15,
-		backgroundColor: 'deepskyblue',
+		backgroundColor: 'lightgreen',
 	},
 	box: {
 		flex: 1,
@@ -104,14 +118,7 @@ const styles = StyleSheet.create({
 	},
 	picker: {
 		width: 250,
-	},
-	textField: {
-		height: 40,
-		width: 250,
-		borderColor: 'gray',
-		borderWidth: 1,
-		backgroundColor: '#fff'
-	},
+	}
 });
 
 

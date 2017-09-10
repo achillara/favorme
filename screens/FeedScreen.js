@@ -17,7 +17,27 @@ let foo = "fft" //let or const
 var user = ""
 
 
+{/*
+  constructor(props) {
+    super(props);
 
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(data),
+    }; 
+  }
+*/}
+
+{/*
+      <View style={styles.container}>
+        <ListView
+          style={styles.container}
+          dataSource={this.state.dataSource}
+          renderRow={(data) => <Row {...data} />}
+        />
+      </View>
+
+*/}
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
     title: 
@@ -27,24 +47,13 @@ export default class LinksScreen extends React.Component {
       />,
   };
 
-  constructor(props) {
-    super(props);
-
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows(data),
-    }; 
-  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <ListView
-          style={styles.container}
-          dataSource={this.state.dataSource}
-          renderRow={(data) => <Row {...data} />}
-        />
-      </View>
+		<View style={styles.container}>
+			<Text>Hello</Text>
+		</View>
+
     );
   }
 }
